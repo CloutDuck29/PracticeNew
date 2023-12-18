@@ -4,6 +4,85 @@
              xmlns:local="clr-namespace:PracticaProj"
              StartupUri="Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- BASIC STYLES -->
+        <Style TargetType="local:MainWindow">
+            <Setter Property="Background" Value="gray"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+        </Style>
+        <Style x:Key="MainContainer" TargetType="Grid">
+            <Setter Property="Margin" Value="25"></Setter>
+        </Style>
+        <!-- LABELS AND INPUTS -->
+        <Style x:Key="Label" TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="WhiteSmoke" />
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border"
+          CornerRadius="10"
+          BorderBrush="Gray"
+          BorderThickness="2"
+          Background="White">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                   Focusable="false"
+                   HorizontalScrollBarVisibility="Hidden"
+                   VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="Foreground" Value="#FF1D224D" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="Blue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- BUTTONS -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="DemiBold" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#2a375e"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bg" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="2" CornerRadius="15" MaxHeight="60" Margin="5 0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF1D224D" TargetName="bg" />
+                                <Setter Property="BorderBrush" Value="WhiteSmoke" TargetName="bg" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Authorization" Height="350" Width="350">
-    <Grid Margin="40 100">
+        Title="Authorization" Height="225" Width="350" WindowStartupLocation="CenterScreen">
+    <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -16,23 +16,23 @@
         </Grid.ColumnDefinitions>
         <UniformGrid Grid.Row="0" Rows="2">
             <UniformGrid VerticalAlignment="Top" Columns="2">
-                <Label>
+                <Label Style="{StaticResource Label}">
                     User name
                 </Label>
                 <TextBox></TextBox>
             </UniformGrid>
             <UniformGrid VerticalAlignment="Top" Columns="2">
-                <Label>
+                <Label Style="{StaticResource Label}">
                     Password
                 </Label>
                 <TextBox></TextBox>
             </UniformGrid>
         </UniformGrid>
-        <UniformGrid VerticalAlignment="Top" MinHeight="40" Grid.Row="1" Columns="2">
-            <Button Margin="10 0" x:Name="loginButton">
+        <UniformGrid Grid.Row="1" Columns="2">
+            <Button x:Name="loginButton">
                 Log in
             </Button>
-            <Button Margin="10 0" x:Name="logoutButton">
+            <Button x:Name="logoutButton">
                 Log out
             </Button>
         </UniformGrid>

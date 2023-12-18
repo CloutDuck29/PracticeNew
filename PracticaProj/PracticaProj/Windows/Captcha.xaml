@@ -5,16 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Captcha" Height="350" Width="350">
-    <UniformGrid Margin="50" VerticalAlignment="Center" Rows="2">
-        <UniformGrid>
-            <Label>Input</Label>
+        Title="Captcha" Height="225" Width="300">
+    <Grid Style="{StaticResource MainContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <UniformGrid VerticalAlignment="Bottom" Grid.Row="0">
+            <Label Style="{StaticResource Label}">Input</Label>
             <TextBox></TextBox>
         </UniformGrid>
-        <UniformGrid Background="gray">
-            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20">
-                Captcha 10 symbols
-            </Label>
-        </UniformGrid>
-    </UniformGrid>
+        <Border VerticalAlignment="Top" Grid.Row="1" Padding="5" CornerRadius="10" Background="DarkGray">
+            <UniformGrid>
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20">
+                    Captcha 10 symbols
+                </Label>
+            </UniformGrid>
+        </Border>
+    </Grid>
 </Window>

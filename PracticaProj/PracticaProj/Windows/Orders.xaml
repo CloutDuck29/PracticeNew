@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Orders" Height="450" Width="800">
+        Title="Orders" Height="500" Width="1000">
     
-    <Grid Margin="20">
+    <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -16,26 +16,31 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Width="40" Margin="0 0 10 0">+</Button>
-            <Button Width="40">+</Button>
-            <Label VerticalAlignment="Center" Margin="20 0 0 0">from</Label>
+            <Button Width="50">+</Button>
+            <Button Width="50">-</Button>
+            <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
+            <Label Style="{StaticResource Label}">from</Label>
             <DatePicker VerticalAlignment="Center"></DatePicker>
-            <Label VerticalAlignment="Center">to</Label>
+            <Label Style="{StaticResource Label}">to</Label>
             <DatePicker VerticalAlignment="Center"></DatePicker>
-            <Label Margin="20 0 0 0" VerticalAlignment="Center">Category:</Label>
+            <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
+            <Label Style="{StaticResource Label}">Category:</Label>
             <ComboBox Margin="5 0 0 0" MinWidth="100"></ComboBox>
-            <Button Margin="20 0 0 0" MinWidth="90">Choose</Button>
-            <Button Margin="10 0 0 0" MinWidth="90">Clear</Button>
+            <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
+            <Button MinWidth="150">Choose</Button>
+            <Button MinWidth="150">Clear</Button>
         </StackPanel>
-        <DataGrid Margin="0 20 0 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ResidentialComplexID}" Header="ЖК"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Street}" Header="Улица"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Number}" Header="Номер"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding StatusRC}" Header="Статус строительства ЖК"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding SoldApart}" Header="Проданных квартир"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding SoldingApart}" Header="Продающихся квартир"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Border CornerRadius="20" Background="DarkGray" Margin="0 20 0 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2">
+            <DataGrid FontSize="14" FontWeight="DemiBold" Background="Transparent">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Binding="{Binding ResidentialComplexID}" Header="ЖК"></DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding Street}" Header="Улица"></DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding Number}" Header="Номер"></DataGridTextColumn>
+                    <DataGridTextColumn Width="2*" Binding="{Binding StatusRC}" Header="Статус строительства ЖК"></DataGridTextColumn>
+                    <DataGridTextColumn Width="2*" Binding="{Binding SoldApart}" Header="Проданных квартир"></DataGridTextColumn>
+                    <DataGridTextColumn Width="2*" Binding="{Binding SoldingApart}" Header="Продающихся квартир"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
     </Grid>
 </Window>

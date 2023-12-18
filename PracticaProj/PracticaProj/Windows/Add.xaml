@@ -6,30 +6,37 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Add" Height="350" Width="500">
-    <UniformGrid Margin="40 60" Rows="5">
-        <UniformGrid MaxHeight="30" Columns="2">
-            <Label>Category</Label>
+        Title="Add" Height="300" Width="400">
+    <Grid Style="{StaticResource MainContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Grid.Row="0" MaxHeight="30" Columns="2">
+            <Label Style="{StaticResource Label}">Category</Label>
             <ComboBox></ComboBox>
         </UniformGrid>
-        <UniformGrid MaxHeight="30" Columns="2">
-            <Label>Name of order</Label>
+        <UniformGrid Grid.Row="1" MaxHeight="30" Columns="2">
+            <Label Style="{StaticResource Label}">Name of order</Label>
             <ComboBox></ComboBox>
         </UniformGrid>
-        <UniformGrid MaxHeight="30" Columns="2">
-            <Label>Count</Label>
+        <UniformGrid Grid.Row="2" Columns="2">
+            <Label Style="{StaticResource Label}">Count</Label>
             <TextBox></TextBox>
         </UniformGrid>
-        <UniformGrid MaxHeight="30" Columns="2">
-            <Label>Cost</Label>
+        <UniformGrid Grid.Row="3" Columns="2">
+            <Label Style="{StaticResource Label}">Cost</Label>
             <WrapPanel>
-                <TextBox MinWidth="175"></TextBox>
-                <Label Margin="5 0 0 0">р.</Label>
+                <TextBox MinWidth="125"></TextBox>
+                <Label Style="{StaticResource Label}">р.</Label>
             </WrapPanel>
         </UniformGrid>
-        <UniformGrid MaxHeight="30" Columns="2">
-            <Button Margin="10 0">Add</Button>
-            <Button Margin="10 0">Cancel</Button>
+        <UniformGrid Grid.Row="4" Columns="2">
+            <Button>Add</Button>
+            <Button>Cancel</Button>
         </UniformGrid>
-    </UniformGrid>
+    </Grid>
 </Window>
