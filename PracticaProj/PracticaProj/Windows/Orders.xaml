@@ -25,7 +25,7 @@
             <DatePicker VerticalAlignment="Center"></DatePicker>
             <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
             <Label Style="{StaticResource Label}">Category:</Label>
-            <ComboBox Margin="5 0 0 0" MinWidth="100"></ComboBox>
+            <ComboBox MinWidth="100"></ComboBox>
             <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
             <Button MinWidth="150">Choose</Button>
             <Button MinWidth="150">Clear</Button>
