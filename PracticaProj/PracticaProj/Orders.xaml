@@ -1,0 +1,40 @@
+﻿<Window x:Class="PracticaProj.Orders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticaProj"
+        mc:Ignorable="d"
+        Title="Orders" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Width="40" Margin="0 0 10 0">+</Button>
+            <Button Width="40">+</Button>
+            <Label VerticalAlignment="Center" Margin="20 0 0 0">from</Label>
+            <DatePicker VerticalAlignment="Center"></DatePicker>
+            <Label VerticalAlignment="Center">to</Label>
+            <DatePicker VerticalAlignment="Center"></DatePicker>
+            <Label Margin="20 0 0 0" VerticalAlignment="Center">Category:</Label>
+            <ComboBox Margin="5 0 0 0" MinWidth="100"></ComboBox>
+            <Button Margin="20 0 0 0" MinWidth="90">Choose</Button>
+            <Button Margin="10 0 0 0" MinWidth="90">Clear</Button>
+        </StackPanel>
+        <DataGrid Margin="0 20 0 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ResidentialComplexID}" Header="ЖК"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Street}" Header="Улица"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Number}" Header="Номер"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding StatusRC}" Header="Статус строительства ЖК"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding SoldApart}" Header="Проданных квартир"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding SoldingApart}" Header="Продающихся квартир"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
