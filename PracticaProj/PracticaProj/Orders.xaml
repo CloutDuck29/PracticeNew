@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
         Title="Orders" Height="450" Width="800">
+    
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
