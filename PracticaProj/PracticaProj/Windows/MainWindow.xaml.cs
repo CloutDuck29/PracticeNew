@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PracticaProj.Functions;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,24 @@ namespace PracticaProj
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            var auth = new Authentication();
+
+            //регистрация нового пользователя
+            auth.Register(loginTxtBox.Text, passwordTxtBox.Text);
+
+            //аунтентификация пользователя
+            if (!auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Text))
+                MessageBox.Show("Неверное имя пользователь или пароль");
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)

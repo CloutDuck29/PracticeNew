@@ -19,20 +19,20 @@
                 <Label Style="{StaticResource Label}">
                     User name
                 </Label>
-                <TextBox></TextBox>
+                <TextBox x:Name="loginTxtBox"></TextBox>
             </UniformGrid>
             <UniformGrid VerticalAlignment="Top" Columns="2">
                 <Label Style="{StaticResource Label}">
                     Password
                 </Label>
-                <TextBox></TextBox>
+                <TextBox x:Name="passwordTxtBox"></TextBox>
             </UniformGrid>
         </UniformGrid>
         <UniformGrid Grid.Row="1" Columns="2">
             <Button Click="loginButton_Click" x:Name="loginButton">
                 Log in
             </Button>
-            <Button x:Name="logoutButton">
+            <Button Click="logoutButton_Click"  x:Name="logoutButton">
                 Log out
             </Button>
         </UniformGrid>

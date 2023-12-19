@@ -19,8 +19,7 @@ namespace PracticaProj
     {
         private static PracticeNewEntities _context;
 
-        public PracticeNewEntities()
-            : base("name=PracticeNewEntities")
+        public PracticeNewEntities() : base("name=PracticeNewEntities")
         {
         }
         
