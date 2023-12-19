@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Add" Height="300" Width="400">
+        Title="Add" Height="300" Width="400" WindowStartupLocation="CenterScreen">
     <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

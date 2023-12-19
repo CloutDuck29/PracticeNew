@@ -24,5 +24,10 @@ namespace PracticaProj
         {
             InitializeComponent();
         }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            // открытие окна Orders
+        }
     }
 }

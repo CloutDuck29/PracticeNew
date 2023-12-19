@@ -9,6 +9,22 @@
             <Setter Property="Background" Value="gray"/>
             <Setter Property="ResizeMode" Value="NoResize"/>
         </Style>
+        <Style TargetType="local:Add">
+            <Setter Property="Background" Value="gray"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+        </Style>
+        <Style TargetType="local:Captcha">
+            <Setter Property="Background" Value="gray"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+        </Style>
+        <Style TargetType="local:Delete">
+            <Setter Property="Background" Value="gray"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+        </Style>
+        <Style TargetType="local:Orders">
+            <Setter Property="Background" Value="gray"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+        </Style>
         <Style x:Key="MainContainer" TargetType="Grid">
             <Setter Property="Margin" Value="25"></Setter>
         </Style>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Authorization" Height="225" Width="350" WindowStartupLocation="CenterScreen">
+        Title="Authorization" Height="250" Width="350" WindowStartupLocation="CenterScreen">
     <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -29,7 +29,7 @@
             </UniformGrid>
         </UniformGrid>
         <UniformGrid Grid.Row="1" Columns="2">
-            <Button x:Name="loginButton">
+            <Button Click="loginButton_Click" x:Name="loginButton">
                 Log in
             </Button>
             <Button x:Name="logoutButton">
