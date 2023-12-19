@@ -5,25 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Captcha" Height="500" Width="500" x:Name="CaptchaWindow" WindowStartupLocation="CenterScreen">
+        Title="Captcha" Height="225" Width="500" x:Name="CaptchaWindow" WindowStartupLocation="CenterScreen">
 
     <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <UniformGrid VerticalAlignment="Bottom" Margin="0 0 0 5" Rows="1" Columns="2" Grid.Row="0">
+        <UniformGrid Columns="2" Grid.Row="0">
+            <Label Style="{StaticResource Label}" Background="Blue" x:Name="captchaLbl">Suda</Label>
+            <Button Grid.Row="0" Click="updButton_Click" x:Name="updButton">update</Button>
+        </UniformGrid>
+        <UniformGrid VerticalAlignment="Bottom" Margin="0 0 0 5" Rows="1" Columns="2" Grid.Row="1">
             <Label Style="{StaticResource Label}">Input</Label>
             <TextBox x:Name="txtBoxForCaptcha"></TextBox>
         </UniformGrid>
 
-        <Button Click="updButton_Click" x:Name="updButton">update</Button>
-        <Label x:Name="captchaLbl">Suda</Label>
-        
-        <Border VerticalAlignment="Top" Margin="0 5 0 0" Grid.Row="1" Padding="5" CornerRadius="10" Background="DarkGray">
+        <Border VerticalAlignment="Top" Margin="0 5 0 0" Grid.Row="2" Padding="5" CornerRadius="10" Background="DarkGray">
             <UniformGrid>
                 <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20">
                     Send
