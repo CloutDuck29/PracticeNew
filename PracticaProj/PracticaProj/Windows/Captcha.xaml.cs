@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PracticaProj.Functions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +21,20 @@ namespace PracticaProj
     /// </summary>
     public partial class Captcha : Window
     {
+        CaptchaGenerator captcha = new CaptchaGenerator();
         public Captcha()
         {
-            InitializeComponent();
+           InitializeComponent();
+           captcha.ShowCaptcha(captchaLbl);
+            captcha.CheckCaptcha(txtBoxForCaptcha, CaptchaWindow);
+
         }
+
+        private void updButton_Click(object sender, RoutedEventArgs e)
+        {
+            captcha.ShowCaptcha(captchaLbl);   
+        }
+
+
     }
 }

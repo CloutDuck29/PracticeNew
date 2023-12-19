@@ -102,6 +102,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Functions\Authentication.cs" />
+    <Compile Include="Functions\CaptchaGenerator.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
