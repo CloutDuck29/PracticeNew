@@ -38,7 +38,7 @@
                 <Label Style="{StaticResource Label}">
                     Password
                 </Label>
-                <TextBox x:Name="passwordTxtBox"></TextBox>
+                <PasswordBox PasswordChar="*" x:Name="passwordTxtBox"></PasswordBox>
             </UniformGrid>
             <UniformGrid VerticalAlignment="Top" Columns="2">
                 <Label Style="{StaticResource Label}">

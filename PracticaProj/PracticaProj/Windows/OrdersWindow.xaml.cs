@@ -17,9 +17,9 @@ namespace PracticaProj
     /// <summary>
     /// Логика взаимодействия для Orders.xaml
     /// </summary>
-    public partial class Orders : Window
+    public partial class OrdersWindow : Window
     {
-        public Orders()
+        public OrdersWindow()
         {
             InitializeComponent();
         }

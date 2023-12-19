@@ -38,11 +38,19 @@ namespace PracticaProj
             var auth = new Authentication();
 
             //регистрация нового пользователя
-            auth.Register(loginTxtBox.Text, passwordTxtBox.Text, nameTxtBox.Text, surnameTxtBox.Text, patronymicTxBox.Text);
+            auth.Register(loginTxtBox.Text, passwordTxtBox.Password, nameTxtBox.Text, surnameTxtBox.Text, patronymicTxBox.Text);
 
             //аунтентификация пользователя
-            if (!auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Text))
+            if (!auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Password))
                 MessageBox.Show("Неверное имя пользователь или пароль");
+            else
+            {
+                
+                OrdersWindow newWindow = new OrdersWindow();
+                newWindow.Show();
+                this.Close();
+            }
+
         }
 
     }
