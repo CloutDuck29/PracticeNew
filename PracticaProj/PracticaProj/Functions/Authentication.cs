@@ -10,11 +10,13 @@ using System.Windows;
 
 namespace PracticaProj.Functions
 {
-    public class Authentication
+    public static class Authentication
     {
 
+        public static int failedAttempts = 0;
+
         //Принимает логин и пароль, хэширует его и сохраняте  нового пользователя в БД
-        public void Register (string username, string password, string name, string surname, string patronymics)
+        public static void Register (string username, string password, string name, string surname, string patronymics)
         {
             using (var db = PracticeNewEntities.GetContext())
             {
@@ -25,7 +27,7 @@ namespace PracticaProj.Functions
         }
 
         //Принимает логин и пароль, проверяет существует ли пользователь с таким именем в БД, и возвращает
-        public async Task<bool> Authenticate(string username, string password)
+        public static async Task<bool> Authenticate(string username, string password)
         {
 
             using (var db = PracticeNewEntities.GetContext())
@@ -40,7 +42,7 @@ namespace PracticaProj.Functions
         }
 
         //Принимает логин и пароль, проверяет существует ли логин в БД
-        public bool IsLoginTaken(string username)
+        public static bool IsLoginTaken(string username)
         {
             using (var db = PracticeNewEntities.GetContext())
             {
@@ -50,14 +52,14 @@ namespace PracticaProj.Functions
         }
 
         //Принимает пароль и алгоритм хэширования, возвращает хэш пароля
-        public string ComputeHash(string input, HashAlgorithm algorithm)
+        public static string ComputeHash(string input, HashAlgorithm algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
             Byte[] hashedBytes = algorithm.ComputeHash(inputBytes);
             return BitConverter.ToString(hashedBytes);
         }
         //Принимает пароль и хэш пароля, сравнивает их
-        public bool VerifyPassword(string input, string hashedPassword)
+        public static bool VerifyPassword(string input, string hashedPassword)
         {
             string hashedInput = ComputeHash(input, new SHA256CryptoServiceProvider());
             return hashedInput == hashedPassword;

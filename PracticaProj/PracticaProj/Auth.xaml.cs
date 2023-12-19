@@ -22,7 +22,6 @@ namespace PracticaProj
     public partial class Auth : Window
     {
         //счет неправильных паролей
-        public int failedAttempts = 0;
         private bool isLocked = false;
         public Auth()
         {
@@ -31,29 +30,34 @@ namespace PracticaProj
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            var auth = new Authentication();
-
             //аунтентификация пользователя
-            if (!await auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Password))
+            if (!await Authentication.Authenticate(loginTxtBox.Text, passwordTxtBox.Password))
             {
+                Authentication.failedAttempts++;
+                if (Authentication.failedAttempts == 1)
+                {
+                    Captcha newWindow = new Captcha(this);
+                    newWindow.Show();
+                    this.Hide();
+                }
 
-                if (failedAttempts == 2)
+                //проверка на 3 попытки
+                if (Authentication.failedAttempts == 3)
                 {
                     MessageBox.Show("ОКНО ЗАБЛОКИРОВАНО!");
                     Thread.Sleep(TimeSpan.FromSeconds(30));
-                    failedAttempts = 0;
+                    Authentication.failedAttempts = 0;
                     isLocked = false;
                     return;
                 }
-                failedAttempts++;
-                MessageBox.Show($"Неверное имя пользователь или пароль. У Вас осталось - {3 - failedAttempts} попыток");
+                MessageBox.Show($"Неверное имя пользователь или пароль. У Вас осталось - {3 - Authentication.failedAttempts} попыток");
 
                 if (!isLocked)
                 {
 
                     try
                     {
-                        var result = await auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Password);
+                        var result = await Authentication.Authenticate(loginTxtBox.Text, passwordTxtBox.Password);
                         if (result)
                         {
                             OrdersWindow newWindow = new OrdersWindow();
@@ -63,7 +67,7 @@ namespace PracticaProj
                     }
                     catch
                     {
-                        
+                        MessageBox.Show("Пользоавтель заблокирован");
                     }
                 }
 

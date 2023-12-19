@@ -32,16 +32,14 @@ namespace PracticaProj
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            var auth = new Authentication();
-            if(auth.IsLoginTaken(loginTxtBox.Text) == true)
+            if(Authentication.IsLoginTaken(loginTxtBox.Text) == true)
             {
                 MessageBox.Show("Логин уже занят");
             }
             else
             {
                 //регистрация нового пользователя
-                auth.Register(loginTxtBox.Text, passwordTxtBox.Password, nameTxtBox.Text, surnameTxtBox.Text, patronymicTxBox.Text);
+                Authentication.Register(loginTxtBox.Text, passwordTxtBox.Password, nameTxtBox.Text, surnameTxtBox.Text, patronymicTxBox.Text);
                 MessageBox.Show("Вы успешно зарегистрировались!");
                 Auth newWindow = new Auth();
                 newWindow.Show();

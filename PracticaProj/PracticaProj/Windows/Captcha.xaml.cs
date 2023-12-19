@@ -21,12 +21,14 @@ namespace PracticaProj
     /// </summary>
     public partial class Captcha : Window
     {
+        public Window window = null;
+
         CaptchaGenerator captcha = new CaptchaGenerator();
-        public Captcha()
+        public Captcha(Window windows)
         {
            InitializeComponent();
+           window = windows;
            captcha.ShowCaptcha(captchaLbl);
-
         }
 
         private void updButton_Click(object sender, RoutedEventArgs e)
@@ -39,6 +41,7 @@ namespace PracticaProj
             if(txtBoxForCaptcha.Text == captcha._captcha)
             {
                 MessageBox.Show("Каптча введена корректно!");
+                window.Show();
                 CaptchaWindow.Close();
             }
             else
