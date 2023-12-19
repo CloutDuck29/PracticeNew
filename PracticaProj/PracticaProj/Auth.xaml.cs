@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,7 +23,6 @@ namespace PracticaProj
     {
         //счет неправильных паролей
         public int failedAttempts = 0;
-
         public Auth()
         {
             InitializeComponent();
@@ -35,8 +35,14 @@ namespace PracticaProj
             //аунтентификация пользователя
             if (!auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Password))
             {
+
                 failedAttempts++;
                 MessageBox.Show($"Неверное имя пользователь или пароль. У Вас осталось - {3 - failedAttempts} попыток");
+                if (failedAttempts >= 3)
+                {
+                    MessageBox.Show("ОКНО ЗАБЛОКИРОВАНО!");
+                    Thread.Sleep(30000);
+                }
             }
             else
             {
