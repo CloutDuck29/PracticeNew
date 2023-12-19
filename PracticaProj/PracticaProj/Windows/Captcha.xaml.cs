@@ -26,7 +26,6 @@ namespace PracticaProj
         {
            InitializeComponent();
            captcha.ShowCaptcha(captchaLbl);
-            captcha.CheckCaptcha(txtBoxForCaptcha, CaptchaWindow);
 
         }
 
@@ -35,6 +34,9 @@ namespace PracticaProj
             captcha.ShowCaptcha(captchaLbl);   
         }
 
-
+        private void buttonSend_Click(object sender, RoutedEventArgs e)
+        {
+            captcha.CheckCaptcha(txtBoxForCaptcha, CaptchaWindow);
+        }
     }
 }

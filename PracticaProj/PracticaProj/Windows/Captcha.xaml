@@ -17,7 +17,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <UniformGrid Columns="2" Grid.Row="0">
-            <Label Style="{StaticResource Label}" Background="Blue" x:Name="captchaLbl">Suda</Label>
+            <Label Style="{StaticResource Label}" Background="#FF1D224D" x:Name="captchaLbl">Suda</Label>
             <Button Grid.Row="0" Click="updButton_Click" x:Name="updButton">update</Button>
         </UniformGrid>
         <UniformGrid VerticalAlignment="Bottom" Margin="0 0 0 5" Rows="1" Columns="2" Grid.Row="1">
@@ -27,9 +27,9 @@
 
         <Border VerticalAlignment="Top" Margin="0 5 0 0" Grid.Row="2" Padding="5" CornerRadius="10" Background="DarkGray">
             <UniformGrid>
-                <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20">
+                <Button Click="buttonSend_Click" x:Name="buttonSend" FontWeight="Bold" FontSize="20">
                     Send
-                </Label>
+                </Button>
             </UniformGrid>
         </Border>
 
