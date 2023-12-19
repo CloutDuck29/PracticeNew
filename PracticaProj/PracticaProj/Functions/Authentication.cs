@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO.Packaging;
 using System.Linq;
 using System.Security.Cryptography;
@@ -24,13 +25,12 @@ namespace PracticaProj.Functions
         }
 
         //Принимает логин и пароль, проверяет существует ли пользователь с таким именем в БД, и возвращает
-        public bool Authenticate(string username, string password)
+        public async Task<bool> Authenticate(string username, string password)
         {
-            MessageBox.Show(username, password);
 
             using (var db = PracticeNewEntities.GetContext())
             {
-                var user = db.Users.SingleOrDefault(x => x.login == username);
+                var user = await db.Users.SingleOrDefaultAsync(x => x.login == username);
                 if (user == null || !VerifyPassword(password, user.password))
                 {
                     return false;

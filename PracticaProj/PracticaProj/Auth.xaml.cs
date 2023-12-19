@@ -23,26 +23,50 @@ namespace PracticaProj
     {
         //счет неправильных паролей
         public int failedAttempts = 0;
+        private bool isLocked = false;
         public Auth()
         {
             InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
             var auth = new Authentication();
 
             //аунтентификация пользователя
-            if (!auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Password))
+            if (!await auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Password))
             {
 
-                failedAttempts++;
-                MessageBox.Show($"Неверное имя пользователь или пароль. У Вас осталось - {3 - failedAttempts} попыток");
-                if (failedAttempts >= 3)
+                if (failedAttempts == 2)
                 {
                     MessageBox.Show("ОКНО ЗАБЛОКИРОВАНО!");
-                    Thread.Sleep(30000);
+                    Thread.Sleep(TimeSpan.FromSeconds(30));
+                    failedAttempts = 0;
+                    isLocked = false;
+                    return;
                 }
+                failedAttempts++;
+                MessageBox.Show($"Неверное имя пользователь или пароль. У Вас осталось - {3 - failedAttempts} попыток");
+
+                if (!isLocked)
+                {
+
+                    try
+                    {
+                        var result = await auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Password);
+                        if (result)
+                        {
+                            OrdersWindow newWindow = new OrdersWindow();
+                            newWindow.Show();
+                            this.Close();
+                        }
+                    }
+                    catch
+                    {
+                        
+                    }
+                }
+
             }
             else
             {
