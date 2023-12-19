@@ -53,7 +53,6 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="MinHeight" Value="30" />
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="WhiteSmoke" />
             
             <Setter Property="Template">
                 <Setter.Value>
