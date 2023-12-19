@@ -1,10 +1,12 @@
 ﻿using PracticaProj.Functions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PracticaProj
 {
@@ -23,10 +26,39 @@ namespace PracticaProj
     {
         //счет неправильных паролей
         private bool isLocked = false;
-       
+        private DispatcherTimer Timer;
+
         public Auth()
         {
             InitializeComponent();
+            Authentication.session.LoadUserSession();
+            if(Authentication.session.BlockDate > DateTime.Now)
+                gridAuth.Visibility = Visibility.Hidden;
+            Timer = new DispatcherTimer();
+            Timer.Tick += new EventHandler(timer_Tick);
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            Timer.Start();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите выйти из приложения?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Authentication.session.CloseUserSession();
+                Application.Current.Shutdown();
+            }
+
+            base.OnClosing(e);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (Authentication.session.BlockDate < DateTime.Now)
+            {
+                gridAuth.Visibility = Visibility.Visible;
+            }
         }
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
@@ -46,7 +78,8 @@ namespace PracticaProj
                 if (Authentication.failedAttempts == 3)
                 {
                     MessageBox.Show("ОКНО ЗАБЛОКИРОВАНО!");
-                    Thread.Sleep(TimeSpan.FromSeconds(30));
+                    Authentication.session.AddBlockSession();
+                    gridAuth.Visibility = Visibility.Hidden;
                     Authentication.failedAttempts = 0;
                     isLocked = false;
                     return;

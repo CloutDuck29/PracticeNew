@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
         Title="Auth" Height="450" Width="800">
-    <Grid Style="{StaticResource MainContainer}">
+    <Grid x:Name="gridAuth" Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
