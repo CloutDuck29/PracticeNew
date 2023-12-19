@@ -14,6 +14,7 @@ namespace PracticaProj.Functions
     {
 
         public static int failedAttempts = 0;
+        public static UserSession session = new UserSession();
 
         //Принимает логин и пароль, хэширует его и сохраняте  нового пользователя в БД
         public static void Register (string username, string password, string name, string surname, string patronymics)

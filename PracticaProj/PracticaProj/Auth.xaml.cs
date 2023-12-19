@@ -23,6 +23,7 @@ namespace PracticaProj
     {
         //счет неправильных паролей
         private bool isLocked = false;
+       
         public Auth()
         {
             InitializeComponent();
@@ -62,20 +63,21 @@ namespace PracticaProj
                         {
                             OrdersWindow newWindow = new OrdersWindow();
                             newWindow.Show();
+                            Authentication.session.OpenUserSession(loginTxtBox.Text);
                             this.Close();
                         }
                     }
                     catch
                     {
-                        MessageBox.Show("Пользоавтель заблокирован");
+                        MessageBox.Show("Пользователь заблокирован");
                     }
                 }
-
             }
             else
             {
                 OrdersWindow newWindow = new OrdersWindow();
                 newWindow.Show();
+                Authentication.session.OpenUserSession(loginTxtBox.Text);
                 this.Close();
             }
         }
