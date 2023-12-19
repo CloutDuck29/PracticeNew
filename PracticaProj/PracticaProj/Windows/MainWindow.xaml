@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Authorization" Height="250" Width="350" WindowStartupLocation="CenterScreen">
+        Title="Authorization" Height="250" Width="700" WindowStartupLocation="CenterScreen">
+    
     <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -17,15 +18,33 @@
         <UniformGrid Grid.Row="0" Rows="2">
             <UniformGrid VerticalAlignment="Top" Columns="2">
                 <Label Style="{StaticResource Label}">
-                    User name
+                    Login
                 </Label>
                 <TextBox x:Name="loginTxtBox"></TextBox>
+            </UniformGrid>
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Name
+                </Label>
+                <TextBox x:Name="nameTxtBox"></TextBox>
+            </UniformGrid>
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Patronymic
+                </Label>
+                <TextBox x:Name="patronymicTxBox"></TextBox>
             </UniformGrid>
             <UniformGrid VerticalAlignment="Top" Columns="2">
                 <Label Style="{StaticResource Label}">
                     Password
                 </Label>
                 <TextBox x:Name="passwordTxtBox"></TextBox>
+            </UniformGrid>
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Surname
+                </Label>
+                <TextBox x:Name="surnameTxtBox"></TextBox>
             </UniformGrid>
         </UniformGrid>
         <UniformGrid Grid.Row="1" Columns="2">

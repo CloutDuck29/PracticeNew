@@ -30,7 +30,7 @@ namespace PracticaProj
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
@@ -38,16 +38,12 @@ namespace PracticaProj
             var auth = new Authentication();
 
             //регистрация нового пользователя
-            auth.Register(loginTxtBox.Text, passwordTxtBox.Text);
+            auth.Register(loginTxtBox.Text, passwordTxtBox.Text, nameTxtBox.Text, surnameTxtBox.Text, patronymicTxBox.Text);
 
             //аунтентификация пользователя
             if (!auth.Authenticate(loginTxtBox.Text, passwordTxtBox.Text))
                 MessageBox.Show("Неверное имя пользователь или пароль");
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
-        {
-            // открытие окна Orders
-        }
     }
 }

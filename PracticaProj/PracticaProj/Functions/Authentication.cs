@@ -12,15 +12,14 @@ namespace PracticaProj.Functions
     public class Authentication
     {
         //Принимает логин и пароль, хэширует его и сохраняте  нового пользователя в БД
-        public void Register (string username, string password)
+        public void Register (string username, string password, string name, string surname, string patronymics)
         {
             using (var db = PracticeNewEntities.GetContext())
             {
                 
                 var hashedPassword = ComputeHash(password, new SHA256CryptoServiceProvider());
-                db.Users.Add(new User { login = username, password = hashedPassword, family_name = "test", first_name = "test" });
+                db.Users.Add(new User { login = username, password = hashedPassword, first_name = name, family_name = surname, patronymic = patronymics });
                 db.SaveChanges();
-
             }
         }
 
