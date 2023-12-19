@@ -1,0 +1,58 @@
+﻿<Window x:Class="PracticaProj.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticaProj"
+        mc:Ignorable="d"
+        Title="Registration" Height="450" Width="800">
+    <Grid Style="{StaticResource MainContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <UniformGrid Grid.Row="0" Rows="2">
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Login
+                </Label>
+                <TextBox x:Name="loginTxtBox"></TextBox>
+            </UniformGrid>
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Name
+                </Label>
+                <TextBox x:Name="nameTxtBox"></TextBox>
+            </UniformGrid>
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Patronymic
+                </Label>
+                <TextBox x:Name="patronymicTxBox"></TextBox>
+            </UniformGrid>
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Password
+                </Label>
+                <PasswordBox PasswordChar="*" x:Name="passwordTxtBox"></PasswordBox>
+            </UniformGrid>
+            <UniformGrid VerticalAlignment="Top" Columns="2">
+                <Label Style="{StaticResource Label}">
+                    Surname
+                </Label>
+                <TextBox x:Name="surnameTxtBox"></TextBox>
+            </UniformGrid>
+        </UniformGrid>
+        <UniformGrid Grid.Row="1" Columns="2">
+            <Button Click="registerButton_Click" x:Name="registerButton">
+                Register
+            </Button>
+            <Button Click="loginButton_Click" x:Name="loginButton">
+                Log in
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Window>

@@ -1,7 +1,6 @@
 ﻿using PracticaProj.Functions;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,24 +11,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PracticaProj
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class Registration : Window
     {
-        public int failedAttempts = 0;
-
-        public MainWindow()
+        public Registration()
         {
             InitializeComponent();
-
         }
-
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -38,11 +29,17 @@ namespace PracticaProj
             this.Close();
         }
 
+
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            Registration newWindow = new Registration();
+            var auth = new Authentication();
+            //регистрация нового пользователя
+            auth.Register(loginTxtBox.Text, passwordTxtBox.Password, nameTxtBox.Text, surnameTxtBox.Text, patronymicTxBox.Text);
+            MessageBox.Show("Вы успешно зарегистрировались!");
+            Auth newWindow = new Auth();
             newWindow.Show();
             this.Close();
+
         }
     }
 }
