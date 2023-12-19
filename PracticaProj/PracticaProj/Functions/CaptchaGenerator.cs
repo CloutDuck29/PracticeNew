@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -32,19 +33,5 @@ namespace PracticaProj.Functions
             // Отобразите каптчу на экране
             label.Content = captcha;
         }
-        public void CheckCaptcha(TextBox textBox, Window window)
-        {
-            if (textBox.Text == _captcha)
-            {
-                MessageBox.Show("Каптча введена корректно!");
-                window.Close();
-            }
-            else
-            {
-                
-            }
-        }
-
-
     }
 }

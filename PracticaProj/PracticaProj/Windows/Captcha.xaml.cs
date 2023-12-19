@@ -36,7 +36,17 @@ namespace PracticaProj
 
         private void buttonSend_Click(object sender, RoutedEventArgs e)
         {
-            captcha.CheckCaptcha(txtBoxForCaptcha, CaptchaWindow);
+            if(txtBoxForCaptcha.Text == captcha._captcha)
+            {
+                MessageBox.Show("Каптча введена корректно!");
+                CaptchaWindow.Close();
+            }
+            else
+            {
+                MessageBox.Show("Каптча неверна, попробуйте еще раз!");
+                captcha.Generate();
+                captcha.ShowCaptcha(captchaLbl);
+            }
         }
     }
 }
