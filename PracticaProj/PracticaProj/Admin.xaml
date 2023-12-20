@@ -1,0 +1,31 @@
+﻿<Window x:Class="PracticaProj.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticaProj"
+        mc:Ignorable="d"
+        Title="Admin" Height="450" Width="800">
+    <Grid Style="{StaticResource MainContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="20" Background="DarkGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0">
+            <DataGrid x:Name="adminDataGrid" AutoGenerateColumns="False" IsReadOnly="True" FontSize="14" FontWeight="DemiBold" Background="Transparent">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Binding="{Binding id}" Header="ID"></DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding login}" Header="Логин"></DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding password}" Header="Пароль"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <UniformGrid VerticalAlignment="Bottom" Grid.Row="1" Rows="2">
+            <TextBox x:Name="searchTXT"></TextBox>
+            <Button x:Name="searchBTN" Click="searchBTN_Click">Choose</Button>
+        </UniformGrid>
+    </Grid>
+</Window>

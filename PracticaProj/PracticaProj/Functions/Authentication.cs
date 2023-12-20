@@ -22,7 +22,7 @@ namespace PracticaProj.Functions
             using (var db = PracticeNewEntities.GetContext())
             {
                 var hashedPassword = ComputeHash(password, new SHA256CryptoServiceProvider());
-                db.Users.Add(new User { login = username, password = hashedPassword, first_name = name, family_name = surname, patronymic = patronymics });
+                db.Users.Add(new User { login = username, password = hashedPassword, first_name = name, family_name = surname, patronymic = patronymics, admin = false });
                 db.SaveChanges();
             }
         }

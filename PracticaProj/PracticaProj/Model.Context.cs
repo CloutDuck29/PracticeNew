@@ -16,17 +16,16 @@ namespace PracticaProj
     public partial class PracticeNewEntities : DbContext
     {
         private static PracticeNewEntities _context;
-
         public PracticeNewEntities()
             : base("name=PracticeNewEntities")
         {
         }
+
         public static PracticeNewEntities GetContext()
         {
             _context = new PracticeNewEntities();
             return _context;
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

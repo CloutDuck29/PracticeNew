@@ -1,7 +1,9 @@
-﻿using PracticaProj.Functions;
+﻿using Newtonsoft.Json;
+using PracticaProj.Functions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +31,18 @@ namespace PracticaProj
             var items = db.Orders.ToList();
             myDataGrid.ItemsSource = items;
             mainCOMBO.ItemsSource = PracticeNewEntities.GetContext().Categories.ToList();
-            //MessageBox.Show(((List<Order>)myDataGrid.ItemsSource).First().Category1.ToString());
+
+            adminBTN.Visibility = Visibility.Hidden;
+            
+            string json = File.ReadAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "UserSession.json"));
+            UserSession currentUser = JsonConvert.DeserializeObject<UserSession>(json);
+            var user = db.Users.First(e => e.login == currentUser.UserName);
+
+            if(user.admin == true)
+            {
+                adminBTN.Visibility = Visibility.Visible;
+            }
+
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -114,6 +127,12 @@ namespace PracticaProj
             }
             myDataGrid.ItemsSource = filterValues;
 
+        }
+
+        private void adminBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Admin window = new Admin();
+            window.Show();
         }
     }
 }
