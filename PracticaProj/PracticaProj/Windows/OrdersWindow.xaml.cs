@@ -24,7 +24,7 @@ namespace PracticaProj
         public OrdersWindow()
         {
             InitializeComponent();
-            var db = new PracticeNewEntities2();
+            var db = new PracticeNewEntities();
             var items = db.Orders.ToList();
             myDataGrid.ItemsSource = items;
             //MessageBox.Show(((List<Order>)myDataGrid.ItemsSource).First().Category1.ToString());
@@ -51,19 +51,39 @@ namespace PracticaProj
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
-            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить?", "Удалить", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            var db = new PracticeNewEntities();
+            if (myDataGrid.SelectedItems.Count == 1)
             {
-                var db = new PracticeNewEntities2();
-                for (int i = 0; i < myDataGrid.SelectedItems.Count; i++)
+                MessageBoxResult result = MessageBox.Show($"Вы уверены, что хотите удалить запись {((Order)myDataGrid.SelectedItem).uniquename}?", "Удалить", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
-                    int temp = ((Order)myDataGrid.SelectedItems[i]).ID;
-                    db.Orders.RemoveRange(db.Orders.Where(e1 => e1.ID == temp));
+                    db.Orders.RemoveRange(db.Orders.Where(e1 => e1.ID == ((Order)myDataGrid.SelectedItem).ID));
                 }
-                db.SaveChanges();
-                myDataGrid.ItemsSource = db.Orders.ToList();
             }
+            else if (myDataGrid.SelectedItems.Count > 1)
+            {
+                double? temp = 0;
+                for(int i = 0; i < myDataGrid.SelectedItems.Count; i++)
+                {
+                    temp += ((Order)myDataGrid.SelectedItems[i]).sum;
+                }
+                MessageBoxResult result = MessageBox.Show($"Вы уверены, что хотите удалить {myDataGrid.SelectedItems.Count} записи(ей) со стоимостью {temp}?", "Удалить", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    for (int i = 0; i < myDataGrid.SelectedItems.Count; i++)
+                    {
+                        int temp1 = ((Order)myDataGrid.SelectedItems[i]).ID;
+                        db.Orders.RemoveRange(db.Orders.Where(e1 => e1.ID == temp1));
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Вы ничего не выбрали", "ОШИБКА");
+            }
+            db.SaveChanges();
+            myDataGrid.ItemsSource = db.Orders.ToList();
+            
         }
     }
 }

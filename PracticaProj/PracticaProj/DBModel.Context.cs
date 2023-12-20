@@ -13,16 +13,17 @@ namespace PracticaProj
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PracticeNewEntities2 : DbContext
+    public partial class PracticeNewEntities : DbContext
     {
-        private static PracticeNewEntities2 _context;
-        public PracticeNewEntities2()
-            : base("name=PracticeNewEntities2")
+        private static PracticeNewEntities _context;
+
+        public PracticeNewEntities()
+            : base("name=PracticeNewEntities")
         {
         }
-        public static PracticeNewEntities2 GetContext()
+        public static PracticeNewEntities GetContext()
         {
-            _context = new PracticeNewEntities2();
+            _context = new PracticeNewEntities();
             return _context;
         }
 

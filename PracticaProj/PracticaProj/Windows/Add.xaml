@@ -6,9 +6,10 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Add" Height="400" Width="400" WindowStartupLocation="CenterScreen">
+        Title="Add" Height="500" Width="400" WindowStartupLocation="CenterScreen">
     <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -45,6 +46,10 @@
             </WrapPanel>
         </UniformGrid>
         <UniformGrid Grid.Row="6" Columns="2">
+            <Label Style="{StaticResource Label}">For what</Label>
+            <TextBox x:Name="forwhatTXT"></TextBox>
+        </UniformGrid>
+        <UniformGrid Grid.Row="7" Columns="2">
             <Button x:Name="addBTN" Click="addBTN_Click">Add</Button>
             <Button x:Name="closeBTN" Click="closeBTN_Click">Cancel</Button>
         </UniformGrid>

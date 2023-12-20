@@ -24,9 +24,9 @@ namespace PracticaProj
         {
             InitializeComponent();
             this.dataGrid1 = dataGrid;
-            categoryCOMBO.ItemsSource = PracticeNewEntities2.GetContext().Categories.ToList();
-            userCOMBO.ItemsSource = PracticeNewEntities2.GetContext().Users.ToList();
-            productCOMBO.ItemsSource = PracticeNewEntities2.GetContext().Products.ToList();
+            categoryCOMBO.ItemsSource = PracticeNewEntities.GetContext().Categories.ToList();
+            userCOMBO.ItemsSource = PracticeNewEntities.GetContext().Users.ToList();
+            productCOMBO.ItemsSource = PracticeNewEntities.GetContext().Products.ToList();
         }
 
         private void addBTN_Click(object sender, RoutedEventArgs e)
@@ -39,8 +39,10 @@ namespace PracticaProj
             s.price = Convert.ToInt32(costTXT.Text);
             s.sum = s.price * s.count;
             s.data = dataPicker.SelectedDate;
+            s.uniquename = s.Category1.category_name.Substring(0,1) + s.ID.ToString() + s.data.ToString();
+            s.forwhat = forwhatTXT.Text;
 
-            var db = new PracticeNewEntities2();
+            var db = new PracticeNewEntities();
             db.Orders.Add(s);
             db.SaveChanges();
 

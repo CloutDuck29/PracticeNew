@@ -22,6 +22,8 @@ namespace PracticaProj
         public Nullable<double> sum { get; set; }
         public Nullable<System.DateTime> data { get; set; }
         public Nullable<int> category { get; set; }
+        public string forwhat { get; set; }
+        public string uniquename { get; set; }
     
         public virtual Category Category1 { get; set; }
         public virtual Product Product { get; set; }

@@ -24,6 +24,8 @@
           <Property Name="sum" Type="float" />
           <Property Name="data" Type="date" />
           <Property Name="category" Type="int" />
+          <Property Name="forwhat" Type="nvarchar" MaxLength="50" />
+          <Property Name="uniquename" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -151,6 +153,8 @@
           <Property Name="sum" Type="Double" />
           <Property Name="data" Type="DateTime" Precision="0" />
           <Property Name="category" Type="Int32" />
+          <Property Name="forwhat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="uniquename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category1" Relationship="Self.FK_Orders_Category" FromRole="Orders" ToRole="Category" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
           <NavigationProperty Name="User" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
@@ -235,7 +239,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PracticeNewEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PracticeNewEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Products" EntityType="Self.Product" />
@@ -263,7 +267,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PracticeNewModelContainer" CdmEntityContainer="PracticeNewEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PracticeNewModelContainer" CdmEntityContainer="PracticeNewEntities">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="PracticeNewModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -283,6 +287,8 @@
                 <ScalarProperty Name="sum" ColumnName="sum" />
                 <ScalarProperty Name="data" ColumnName="data" />
                 <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="forwhat" ColumnName="forwhat" />
+                <ScalarProperty Name="uniquename" ColumnName="uniquename" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

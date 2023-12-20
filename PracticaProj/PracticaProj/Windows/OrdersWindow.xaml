@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Orders" Height="500" Width="1025" WindowStartupLocation="CenterScreen">
+        Title="Orders" Height="500" Width="1300" WindowStartupLocation="CenterScreen">
     
     <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
@@ -38,7 +38,7 @@
                     <DataGridTextColumn Width="*" Binding="{Binding price}" Header="Цена"></DataGridTextColumn>
                     <DataGridTextColumn Width="*" Binding="{Binding sum}" Header="Стоимость (Р)"></DataGridTextColumn>
                     <DataGridTextColumn Width="2*" Binding="{Binding data}" Header="Дата"></DataGridTextColumn>
-                    
+                    <DataGridTextColumn Width="*" Binding="{Binding forwhat}" Header="Назначение"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
