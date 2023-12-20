@@ -18,15 +18,15 @@
         <StackPanel Orientation="Horizontal">
             <Button x:Name="addBtn" Click="addBtn_Click" Width="50">+</Button>
             <Button x:Name="deleteBtn" Click="deleteBtn_Click" Width="50">-</Button>
-            <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
+            <Line Opacity="0.8" Margin="25 0" Stroke="White" StrokeThickness="4" X1="0" Y1="-15" X2="0" Y2="55"></Line>
             <Label Style="{StaticResource Label}">from</Label>
             <DatePicker x:Name="datePickFrom" VerticalAlignment="Center"></DatePicker>
             <Label Style="{StaticResource Label}">to</Label>
             <DatePicker x:Name="datePickTo" VerticalAlignment="Center"></DatePicker>
-            <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
+            <Line Opacity="0.8" Margin="25 0" Stroke="White" StrokeThickness="4" X1="0" Y1="-15" X2="0" Y2="55"></Line>
             <Label Style="{StaticResource Label}">Category:</Label>
-            <ComboBox DisplayMemberPath="category_name" SelectedItem="{Binding Category1.Id_category}" x:Name="mainCOMBO" MinWidth="100"></ComboBox>
-            <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
+            <ComboBox Width="250" DisplayMemberPath="category_name" SelectedItem="{Binding Category1.Id_category}" x:Name="mainCOMBO" MinWidth="100"></ComboBox>
+            <Line Opacity="0.8" Margin="25 0" Stroke="White" StrokeThickness="4" X1="0" Y1="-15" X2="0" Y2="55"></Line>
             <Button x:Name="chooseBTN" Click="chooseBTN_Click" MinWidth="150">Choose</Button>
             <Button x:Name="clearBTN" Click="clearBTN_Click" MinWidth="150">Clear</Button>
         </StackPanel>
