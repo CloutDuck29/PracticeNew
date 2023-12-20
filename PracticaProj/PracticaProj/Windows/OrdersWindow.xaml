@@ -20,18 +20,18 @@
             <Button x:Name="deleteBtn" Click="deleteBtn_Click" Width="50">-</Button>
             <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
             <Label Style="{StaticResource Label}">from</Label>
-            <DatePicker VerticalAlignment="Center"></DatePicker>
+            <DatePicker x:Name="datePickFrom" VerticalAlignment="Center"></DatePicker>
             <Label Style="{StaticResource Label}">to</Label>
-            <DatePicker VerticalAlignment="Center"></DatePicker>
+            <DatePicker x:Name="datePickTo" VerticalAlignment="Center"></DatePicker>
             <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
             <Label Style="{StaticResource Label}">Category:</Label>
             <ComboBox DisplayMemberPath="category_name" SelectedItem="{Binding Category1.Id_category}" x:Name="mainCOMBO" MinWidth="100"></ComboBox>
             <Line Margin="15 0" Stroke="White" StrokeThickness="3" X1="0" Y1="-10" X2="0" Y2="50"></Line>
-            <Button MinWidth="150">Choose</Button>
-            <Button MinWidth="150">Clear</Button>
+            <Button x:Name="chooseBTN" Click="chooseBTN_Click" MinWidth="150">Choose</Button>
+            <Button x:Name="clearBTN" Click="clearBTN_Click" MinWidth="150">Clear</Button>
         </StackPanel>
         <Border CornerRadius="20" Background="DarkGray" Margin="0 20 0 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2">
-            <DataGrid x:Name="myDataGrid" AutoGenerateColumns="False" IsReadOnly="True" FontSize="14" FontWeight="DemiBold" Background="Transparent">
+            <DataGrid x:Name="myDataGrid"  AutoGenerateColumns="False" IsReadOnly="True" FontSize="14" FontWeight="DemiBold" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="2*" Binding="{Binding Category1.category_name}" Header="Наименование (категории)"></DataGridTextColumn>
                     <DataGridTextColumn Width="*" Binding="{Binding count}" Header="Количество"></DataGridTextColumn>

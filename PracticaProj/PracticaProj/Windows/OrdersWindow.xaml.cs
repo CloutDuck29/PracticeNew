@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xaml;
 
 namespace PracticaProj
 {
@@ -40,7 +41,6 @@ namespace PracticaProj
                 Authentication.session.CloseUserSession();
                 Application.Current.Shutdown();
             }
-
             base.OnClosing(e);
         }
 
@@ -84,7 +84,36 @@ namespace PracticaProj
             }
             db.SaveChanges();
             myDataGrid.ItemsSource = db.Orders.ToList();
-            
+        }
+
+        private void clearBTN_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void chooseBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var filterValues = PracticeNewEntities.GetContext().Orders.ToList();
+
+            var selectedCategory = mainCOMBO.SelectedItem;
+            filterValues = filterValues.Where(x => x.category == ((Category)selectedCategory).Id_category).ToList();
+
+            if(datePickFrom.SelectedDate != null) 
+            {
+                filterValues = filterValues.Where(x => x.data > datePickFrom.SelectedDate).ToList();
+            }
+
+            if (datePickTo.SelectedDate != null)
+            {
+                filterValues = filterValues.Where(x => x.data < datePickTo.SelectedDate).ToList();
+            }
+            myDataGrid.ItemsSource = filterValues;
+
+        }
+
+        private void mainCOMBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
