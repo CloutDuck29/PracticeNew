@@ -88,7 +88,8 @@ namespace PracticaProj
 
         private void clearBTN_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var db = new PracticeNewEntities();
+            myDataGrid.ItemsSource = db.Orders.ToList();
         }
 
         private void chooseBTN_Click(object sender, RoutedEventArgs e)
@@ -96,9 +97,13 @@ namespace PracticaProj
             var filterValues = PracticeNewEntities.GetContext().Orders.ToList();
 
             var selectedCategory = mainCOMBO.SelectedItem;
-            filterValues = filterValues.Where(x => x.category == ((Category)selectedCategory).Id_category).ToList();
 
-            if(datePickFrom.SelectedDate != null) 
+            if (selectedCategory != null)
+            {
+                filterValues = filterValues.Where(x => x.category == ((Category)selectedCategory).Id_category).ToList();
+            }
+
+            if (datePickFrom.SelectedDate != null) 
             {
                 filterValues = filterValues.Where(x => x.data > datePickFrom.SelectedDate).ToList();
             }
@@ -108,11 +113,6 @@ namespace PracticaProj
                 filterValues = filterValues.Where(x => x.data < datePickTo.SelectedDate).ToList();
             }
             myDataGrid.ItemsSource = filterValues;
-
-        }
-
-        private void mainCOMBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
         }
     }
