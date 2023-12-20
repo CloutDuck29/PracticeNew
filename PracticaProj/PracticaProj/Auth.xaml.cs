@@ -111,9 +111,9 @@ namespace PracticaProj
                         var result = await Authentication.Authenticate(loginTxtBox.Text, passwordTxtBox.Password);
                         if (result)
                         {
+                            Authentication.session.OpenUserSession(loginTxtBox.Text);
                             OrdersWindow newWindow = new OrdersWindow();
                             newWindow.Show();
-                            Authentication.session.OpenUserSession(loginTxtBox.Text);
                             this.Close();
                         }
                     }
@@ -125,9 +125,9 @@ namespace PracticaProj
             }
             else
             {
+                Authentication.session.OpenUserSession(loginTxtBox.Text);
                 OrdersWindow newWindow = new OrdersWindow();
                 newWindow.Show();
-                Authentication.session.OpenUserSession(loginTxtBox.Text);
                 isCodeClose = true;
                 this.Close();
             }

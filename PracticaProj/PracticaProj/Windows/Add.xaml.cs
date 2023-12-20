@@ -112,7 +112,7 @@ namespace PracticaProj
                 s.price = Convert.ToInt32(costTXT.Text);
                 s.sum = s.price * s.count;
                 s.data = dataPicker.SelectedDate;
-                s.uniquename = s.Category1.category_name.Substring(0, 1) + s.ID.ToString() + s.data.ToString();
+                s.uniquename = ((Category)categoryCOMBO.SelectedItem).category_name.Substring(0, 1) + s.ID.ToString() + s.data.ToString();
                 s.forwhat = forwhatTXT.Text;
 
                 var db = new PracticeNewEntities();
