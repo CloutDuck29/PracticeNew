@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Authorization" Height="200" Width="500" WindowStartupLocation="CenterScreen">
+        Title="Authorization" Height="250" Width="700" WindowStartupLocation="CenterScreen">
     
     <Grid Style="{StaticResource MainContainer}">
         <UniformGrid Grid.Row="1" Columns="2">

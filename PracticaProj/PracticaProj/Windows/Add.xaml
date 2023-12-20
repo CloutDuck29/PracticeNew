@@ -40,7 +40,7 @@
         </UniformGrid>
         <UniformGrid Grid.Row="5" Columns="2">
             <Label Style="{StaticResource Label}">Cost</Label>
-            <WrapPanel VerticalAlignment="Center">
+            <WrapPanel>
                 <TextBox x:Name="costTXT"  MinWidth="125"></TextBox>
                 <Label Style="{StaticResource Label}">р.</Label>
             </WrapPanel>
