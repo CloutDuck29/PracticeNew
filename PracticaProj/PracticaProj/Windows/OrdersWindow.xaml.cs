@@ -52,6 +52,18 @@ namespace PracticaProj
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить?", "Удалить", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                var db = new PracticeNewEntities2();
+                for (int i = 0; i < myDataGrid.SelectedItems.Count; i++)
+                {
+                    int temp = ((Order)myDataGrid.SelectedItems[i]).ID;
+                    db.Orders.RemoveRange(db.Orders.Where(e1 => e1.ID == temp));
+                }
+                db.SaveChanges();
+                myDataGrid.ItemsSource = db.Orders.ToList();
+            }
         }
     }
 }
