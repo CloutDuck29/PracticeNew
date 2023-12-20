@@ -18,20 +18,20 @@
         </Grid.ColumnDefinitions>
         <UniformGrid Columns="2" Grid.Row="0">
             <Label Style="{StaticResource Label}" Background="#FF1D224D" x:Name="captchaLbl">Suda</Label>
-            <Button Grid.Row="0" Click="updButton_Click" x:Name="updButton">update</Button>
+            <Button BorderBrush="Transparent" HorizontalAlignment="Center" Style="{StaticResource ButtonWithImage}" Grid.Row="0" Click="updButton_Click" x:Name="updButton">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="reload.png" Width="30" Height="30"/>
+                </StackPanel>
+            </Button>
         </UniformGrid>
         <UniformGrid VerticalAlignment="Bottom" Margin="0 0 0 5" Rows="1" Columns="2" Grid.Row="1">
             <Label Style="{StaticResource Label}">Input</Label>
             <TextBox x:Name="txtBoxForCaptcha"></TextBox>
         </UniformGrid>
-
-        <Border VerticalAlignment="Top" Margin="0 5 0 0" Grid.Row="2" Padding="5" CornerRadius="10" Background="DarkGray">
-            <UniformGrid>
+            <UniformGrid Grid.Row="2">
                 <Button Click="buttonSend_Click" x:Name="buttonSend" FontWeight="Bold" FontSize="20">
                     Send
                 </Button>
             </UniformGrid>
-        </Border>
-
     </Grid>
 </Window>

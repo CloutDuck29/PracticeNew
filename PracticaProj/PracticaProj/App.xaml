@@ -36,6 +36,10 @@
         <Style x:Key="MainContainer" TargetType="Grid">
             <Setter Property="Margin" Value="25"></Setter>
         </Style>
+        <Style TargetType="local:Admin">
+            <Setter Property="Background" Value="gray"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+        </Style>
         <!-- LABELS AND INPUTS -->
         <Style x:Key="Label" TargetType="Label">
             <Setter Property="FontSize" Value="16"/>
@@ -52,6 +56,7 @@
         <Style TargetType="ComboBox">
             <Setter Property="Margin" Value="5" />
             <Setter Property="Padding" Value="3" />
+            <Setter Property="MinHeight" Value="30" />
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="14" />
         </Style>
@@ -137,6 +142,9 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="ButtonWithImage" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
         </Style>
     </Application.Resources>
 </Application>
