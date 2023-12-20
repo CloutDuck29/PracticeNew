@@ -27,6 +27,7 @@ namespace PracticaProj
             var db = new PracticeNewEntities();
             var items = db.Orders.ToList();
             myDataGrid.ItemsSource = items;
+            mainCOMBO.ItemsSource = PracticeNewEntities.GetContext().Categories.ToList();
             //MessageBox.Show(((List<Order>)myDataGrid.ItemsSource).First().Category1.ToString());
         }
 
