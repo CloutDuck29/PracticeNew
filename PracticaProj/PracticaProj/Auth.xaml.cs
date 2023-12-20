@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -27,12 +28,12 @@ namespace PracticaProj
         //счет неправильных паролей
         private bool isLocked = false;
         private DispatcherTimer Timer;
-
+        private bool isCodeClose = false;
         public Auth()
         {
             InitializeComponent();
             Authentication.session.LoadUserSession();
-            if(Authentication.session.BlockDate > DateTime.Now)
+            if (Authentication.session.BlockDate > DateTime.Now)
                 gridAuth.Visibility = Visibility.Hidden;
             Timer = new DispatcherTimer();
             Timer.Tick += new EventHandler(timer_Tick);
@@ -42,6 +43,11 @@ namespace PracticaProj
 
         protected override void OnClosing(CancelEventArgs e)
         {
+            if(isCodeClose)
+            {
+                base.OnClosing(e);
+                return;
+            }
             MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите выйти из приложения?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
@@ -64,6 +70,17 @@ namespace PracticaProj
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
             //аунтентификация пользователя
+            using (var db = PracticeNewEntities.GetContext())
+            {
+                if(!db.Users.Any(y => y.login == loginTxtBox.Text))
+                {
+                    MessageBox.Show("Пользователя не сущетсвует");
+
+                    return;
+                }
+            }
+
+
             if (!await Authentication.Authenticate(loginTxtBox.Text, passwordTxtBox.Password))
             {
                 Authentication.failedAttempts++;
@@ -111,6 +128,7 @@ namespace PracticaProj
                 OrdersWindow newWindow = new OrdersWindow();
                 newWindow.Show();
                 Authentication.session.OpenUserSession(loginTxtBox.Text);
+                isCodeClose = true;
                 this.Close();
             }
         }
@@ -120,6 +138,7 @@ namespace PracticaProj
         {
             Registration newWindow = new Registration();
             newWindow.Show();
+            isCodeClose = true;
             this.Close();
         }
     }

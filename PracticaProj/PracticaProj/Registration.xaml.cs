@@ -1,6 +1,7 @@
 ﻿using PracticaProj.Functions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace PracticaProj
 {
     public partial class Registration : Window
     {
+
         public Registration()
         {
             InitializeComponent();

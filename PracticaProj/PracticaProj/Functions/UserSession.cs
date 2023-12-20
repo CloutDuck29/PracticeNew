@@ -15,24 +15,13 @@ namespace PracticaProj.Functions
         public string UserName { get; set; }   
         public DateTime BlockDate { get; set; }
 
-        public List<UserSession> UseUserDefinedObjectWithNewtonsoftJson()
-        {
-            using (StreamReader reader = new StreamReader(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "UserSession.json")))
-            {
-                var json = reader.ReadToEnd();
-                List<UserSession> users = JsonConvert.DeserializeObject<List<UserSession>>(json);
-                return users;
-            };
-        }
+
 
         public void OpenUserSession(string username)
         {
             Authentication.session.LoginTime = DateTime.Now;
             Authentication.session.UserName = username;
-
-            List<UserSession> userSessions = UseUserDefinedObjectWithNewtonsoftJson();
-            Authentication.session.BlockDate = userSessions.First().BlockDate;
-
+            Authentication.session.BlockDate = new DateTime();
             var json = JsonConvert.SerializeObject(Authentication.session);
             File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "UserSession.json"), json);
         }
@@ -59,6 +48,8 @@ namespace PracticaProj.Functions
 
         public void CloseUserSession()
         {
+            if(!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "UserSession.json")))
+                return;
             var json = File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "UserSession.json"));
             var userSession = JsonConvert.DeserializeObject<UserSession>(json);
 
