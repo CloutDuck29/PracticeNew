@@ -6,9 +6,11 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:PracticaProj"
         mc:Ignorable="d"
-        Title="Add" Height="300" Width="400" WindowStartupLocation="CenterScreen">
+        Title="Add" Height="400" Width="400" WindowStartupLocation="CenterScreen">
     <Grid Style="{StaticResource MainContainer}">
         <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -17,26 +19,34 @@
         </Grid.RowDefinitions>
         <UniformGrid Grid.Row="0" MaxHeight="30" Columns="2">
             <Label Style="{StaticResource Label}">Category</Label>
-            <ComboBox></ComboBox>
+            <ComboBox DisplayMemberPath="category_name" SelectedItem="{Binding Category1.id_category}" x:Name="categoryCOMBO"></ComboBox>
         </UniformGrid>
         <UniformGrid Grid.Row="1" MaxHeight="30" Columns="2">
-            <Label Style="{StaticResource Label}">Name of order</Label>
-            <ComboBox></ComboBox>
+            <Label Style="{StaticResource Label}">User</Label>
+            <ComboBox DisplayMemberPath="login" SelectedItem="{Binding Users.id}" x:Name="userCOMBO"></ComboBox>
         </UniformGrid>
-        <UniformGrid Grid.Row="2" Columns="2">
+        <UniformGrid Grid.Row="2" MaxHeight="30" Columns="2">
+            <Label Style="{StaticResource Label}">Product</Label>
+            <ComboBox DisplayMemberPath="product_name" SelectedItem="{Binding Products.id}" x:Name="productCOMBO"></ComboBox>
+        </UniformGrid>
+        <UniformGrid Grid.Row="3" MaxHeight="30" Columns="2">
+            <Label Style="{StaticResource Label}">Date</Label>
+            <DatePicker x:Name="dataPicker"></DatePicker>
+        </UniformGrid>
+        <UniformGrid Grid.Row="4" Columns="2">
             <Label Style="{StaticResource Label}">Count</Label>
-            <TextBox></TextBox>
+            <TextBox x:Name="countTXT"></TextBox>
         </UniformGrid>
-        <UniformGrid Grid.Row="3" Columns="2">
+        <UniformGrid Grid.Row="5" Columns="2">
             <Label Style="{StaticResource Label}">Cost</Label>
             <WrapPanel>
-                <TextBox MinWidth="125"></TextBox>
+                <TextBox x:Name="costTXT"  MinWidth="125"></TextBox>
                 <Label Style="{StaticResource Label}">р.</Label>
             </WrapPanel>
         </UniformGrid>
-        <UniformGrid Grid.Row="4" Columns="2">
-            <Button>Add</Button>
-            <Button>Cancel</Button>
+        <UniformGrid Grid.Row="6" Columns="2">
+            <Button x:Name="addBTN" Click="addBTN_Click">Add</Button>
+            <Button x:Name="closeBTN" Click="closeBTN_Click">Cancel</Button>
         </UniformGrid>
     </Grid>
 </Window>

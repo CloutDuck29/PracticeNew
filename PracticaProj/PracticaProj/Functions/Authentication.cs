@@ -19,7 +19,7 @@ namespace PracticaProj.Functions
         //Принимает логин и пароль, хэширует его и сохраняте  нового пользователя в БД
         public static void Register (string username, string password, string name, string surname, string patronymics)
         {
-            using (var db = PracticeNewEntities.GetContext())
+            using (var db = PracticeNewEntities2.GetContext())
             {
                 var hashedPassword = ComputeHash(password, new SHA256CryptoServiceProvider());
                 db.Users.Add(new User { login = username, password = hashedPassword, first_name = name, family_name = surname, patronymic = patronymics });
@@ -31,7 +31,7 @@ namespace PracticaProj.Functions
         public static async Task<bool> Authenticate(string username, string password)
         {
 
-            using (var db = PracticeNewEntities.GetContext())
+            using (var db = PracticeNewEntities2.GetContext())
             {
                 var user = await db.Users.SingleOrDefaultAsync(x => x.login == username);
                 if (user == null || !VerifyPassword(password, user.password))
@@ -45,7 +45,7 @@ namespace PracticaProj.Functions
         //Принимает логин и пароль, проверяет существует ли логин в БД
         public static bool IsLoginTaken(string username)
         {
-            using (var db = PracticeNewEntities.GetContext())
+            using (var db = PracticeNewEntities2.GetContext())
             {
                 return db.Users.Any(x => x.login == username);
             }

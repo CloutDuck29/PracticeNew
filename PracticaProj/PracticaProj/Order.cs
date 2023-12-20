@@ -20,7 +20,10 @@ namespace PracticaProj
         public Nullable<double> price { get; set; }
         public Nullable<int> count { get; set; }
         public Nullable<double> sum { get; set; }
+        public Nullable<System.DateTime> data { get; set; }
+        public Nullable<int> category { get; set; }
     
+        public virtual Category Category1 { get; set; }
         public virtual Product Product { get; set; }
         public virtual User User { get; set; }
     }

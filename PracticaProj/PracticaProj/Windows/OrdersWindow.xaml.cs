@@ -24,6 +24,10 @@ namespace PracticaProj
         public OrdersWindow()
         {
             InitializeComponent();
+            var db = new PracticeNewEntities2();
+            var items = db.Orders.ToList();
+            myDataGrid.ItemsSource = items;
+            //MessageBox.Show(((List<Order>)myDataGrid.ItemsSource).First().Category1.ToString());
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -37,6 +41,17 @@ namespace PracticaProj
             }
 
             base.OnClosing(e);
+        }
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Add window = new Add(myDataGrid);
+            window.Show();
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
