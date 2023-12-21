@@ -35,6 +35,7 @@
             <DataGrid x:Name="myDataGrid"  AutoGenerateColumns="False" IsReadOnly="True" FontSize="14" FontWeight="DemiBold" Background="Transparent">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="2*" Binding="{Binding Category1.category_name}" Header="Наименование (категории)"></DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Binding="{Binding Product.product_name}" Header="Продукт"></DataGridTextColumn>
                     <DataGridTextColumn Width="*" Binding="{Binding count}" Header="Количество"></DataGridTextColumn>
                     <DataGridTextColumn Width="*" Binding="{Binding price}" Header="Цена"></DataGridTextColumn>
                     <DataGridTextColumn Width="*" Binding="{Binding sum}" Header="Стоимость (Р)"></DataGridTextColumn>
